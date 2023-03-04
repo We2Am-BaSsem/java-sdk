@@ -24,3 +24,14 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml
+        
+  container-job:
+    runs-on: ubuntu-latest
+    container: sonarsource/sonar-scanner-cli:latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Analysis
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=keploy-sdk -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN} || true
+
+                
