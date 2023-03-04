@@ -15,5 +15,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Analysis
-        run: sonar-scanner -Dsonar.projectKey="Keploy Java SDK" -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN} || true
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=keploy-sdk -Dsonar.sources=. -Dsonar.host.url=${SONAR_HOST_URL} -Dsonar.login=${SONAR_TOKEN} || true
+
         
