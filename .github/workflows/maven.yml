@@ -30,6 +30,10 @@ jobs:
     
     container: sonarsource/sonarqube-scan:latest
     steps:
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.8.2
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Analysis
