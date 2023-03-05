@@ -35,6 +35,8 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: warning
-          workdir: "**/keploy/service/**"
+#          workdir: "**/keploy/service/**"
+#          config: "checkstyle.xml"
+          exclude: "**/keploy/grpc/**"
 
 
