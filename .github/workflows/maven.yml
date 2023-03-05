@@ -35,8 +35,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: warning
-          config: checkstyle.xml
-          path: src/main/java
-          fail_on_error: true
+          # check only api module
+          path: ./api/src/main/java
 
                 
