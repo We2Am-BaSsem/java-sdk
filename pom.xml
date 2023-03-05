@@ -68,6 +68,28 @@
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.puppycrawl.tools</groupId>
+                                <artifactId>checkstyle</artifactId>
+                                <version>8.31</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>io.keploy</groupId>
+                                <artifactId>java-sdk</artifactId>
+                                <version>1.0.0-SNAPSHOT</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <excludes>**/models/**,**/keploy-sdk/**</excludes>
+                            <configLocation>checkstyle.xml</configLocation>
+                        </configuration>
+                    </plugin>
+
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
                         <version>3.2.1</version>
                         <executions>
@@ -189,29 +211,48 @@
 
     <build>
         <plugins>
-        
-                    <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.7.0.1746</version>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.31</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <excludes>
+                        <!--ignore models directory-->
+                        **/keploy/grpc/**,
+                        <!--ignore core directory-->
+                        **/keploy/regression/**,
+                        <!--ignore common directory-->
+                        **/keploy/utils/**,
+                        <!--ignore api directory-->
+                        **/keploy/service/**,
+                        <!--ignore integration directory-->
+                        **/keploy/googleMaps/**,
+                        **/keploy/httpClients/**,
+                        **/keploy/ksql/**,
+                        **/keploy/redis/**,
+                        **/keploy/servlet/**,
+                        <!--ignore integration directory-->
+                        **/keploy/advice/**,
+                        **/keploy/agent/**,
+                    </excludes>
+                </configuration>
             </plugin>
-        
-        
-        <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>sonar-maven-plugin</artifactId>
-    <version>3.0.2</version>
-</plugin>
-        			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.7</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.0.0</version>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
             <!--                        <plugin>-->
             <!--                            <groupId>org.apache.maven.plugins</groupId>-->
             <!--                            <artifactId>maven-gpg-plugin</artifactId>-->
@@ -293,22 +334,31 @@
             <!--                        </plugin>-->
         </plugins>
     </build>
-       <reporting>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>3.2.1</version>
-          <reportSets>
-            <reportSet>
-              <reports>
-                <report>checkstyle</report>
-              </reports>
-            </reportSet>
-          </reportSets>
-        </plugin>
-      </plugins>
-    </reporting>
+<!--    <reporting>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--                <version>3.2.1</version>-->
+<!--                <reportSets>-->
+<!--                    <reportSet>-->
+<!--                        <reports>-->
+<!--                            <report>checkstyle</report>-->
+<!--                        </reports>-->
+<!--                    </reportSet>-->
+<!--                </reportSets>-->
+<!--                <configuration>-->
+<!--                    <configLocation>checkstyle.xml</configLocation>-->
+<!--                    <consoleOutput>true</consoleOutput>-->
+<!--                    <failsOnError>true</failsOnError>-->
+<!--                    <linkXRef>false</linkXRef>-->
+<!--                    &lt;!&ndash;exclude models  and keploy-sdk module&ndash;&gt;-->
+<!--                    <excludes>**/models/**,**/keploy-sdk/**</excludes>-->
+
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </reporting>-->
 
 
 </project>
