@@ -37,6 +37,6 @@ jobs:
           level: warning
 #          workdir: "**/keploy/service/**"
 #          config: "checkstyle.xml"
-          exclude: "**/keploy/grpc/**"
+          excludes: "**/keploy/grpc/**"
 
 
