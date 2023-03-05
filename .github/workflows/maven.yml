@@ -36,6 +36,6 @@ jobs:
           reporter: github-pr-review
           level: warning
           # check only api module
-          path: ./api/src/main/java
+          workdir: ./api/src/main/java
 
                 
