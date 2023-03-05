@@ -35,7 +35,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: warning
-          workdir: /workspace/./api
+          workdir: /home/runner/work/java-sdk/api
 #          workdir: ./api
 
 
