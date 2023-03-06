@@ -222,25 +222,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <excludes>
-                        <!--ignore models directory-->
-                        **/keploy/grpc/**,
-                        <!--ignore core directory-->
-                        **/keploy/regression/**,
-                        <!--ignore common directory-->
-                        **/keploy/utils/**,
-                        <!--ignore api directory-->
-                        **/keploy/service/**,
-                        <!--ignore integration directory-->
-                        **/keploy/googleMaps/**,
-                        **/keploy/httpClients/**,
-                        **/keploy/ksql/**,
-                        **/keploy/redis/**,
-                        **/keploy/servlet/**,
-                        <!--ignore integration directory-->
-                        **/keploy/advice/**,
-                        **/keploy/agent/**,
-                    </excludes>
+                    <configLocation>checkstyle.xml</configLocation>
                 </configuration>
             </plugin>
             <plugin>
