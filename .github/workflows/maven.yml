@@ -35,5 +35,5 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: info
-          #checkstyle_config: checkstyle-config.xml
+          checkstyle_config: checkstyle.xml
 
