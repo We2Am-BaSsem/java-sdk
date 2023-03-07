@@ -21,5 +21,33 @@
 -->
 
 <module name="Checker">
+  <!--
+      If you set the basedir property below, then all reported file
+      names will be relative to the specified directory. See
+      https://checkstyle.org/config.html#Checker
+      <property name="basedir" value="${basedir}"/>
+  -->
+  <property name="severity" value="error"/>
+
+  <property name="fileExtensions" value="java, properties, xml"/>
+  
+  
+  
+  <module name="BeforeExecutionExclusionFileFilter">
+         <property name="fileNamePattern" value="/models/"/>  <!-- 1 -->
+   </module>
+  <module name="BeforeExecutionExclusionFileFilter">
+         <property name="fileNamePattern" value="/core/"/>  <!-- 1 -->
+   </module>
+  
+
+
+  <module name="TreeWalker">
+    <module name="AvoidStarImport"/>
+      <module name="ArrayTypeStyle"/>
+    <module name="TodoComment"/>
+    <module name="UpperEll"/>
+
+  </module>
 
 </module>
