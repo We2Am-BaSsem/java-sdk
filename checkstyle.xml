@@ -30,7 +30,21 @@
   <property name="severity" value="error"/>
 
   <property name="fileExtensions" value="java, properties, xml"/>
-  <module name="JavadocPackage"/>
+
+  <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
+  <module name="SuppressionFilter">
+    <property name="file" value="${org.checkstyle.sun.suppressionfilter.config}"
+              default="checkstyle-suppressions.xml" />
+    <property name="optional" value="true"/>
+  </module>
+
+
+  <!-- Checks for Size Violations.                    -->
+  <!-- See https://checkstyle.org/config_sizes.html -->
+  <module name="FileLength"/>
+  <module name="LineLength">
+    <property name="fileExtensions" value="java"/>
+  </module>
 
 
 </module>
